@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Optimization Results - Smart_Nerg</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body class="results-page">
+    <div class="grain-overlay"></div>
+    
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                        </svg>
+                    </div>
+                    <span class="logo-text">Smart_Nerg</span>
+                </div>
+                <div class="nav-links">
+                    <a href="/" class="nav-link">Home</a>
+                    <a href="configure" class="nav-link">Configure</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="results-main">
+        <div class="container">
+            <div class="results-header">
+                <div>
+                    <div class="status-badge">
+                        <span class="status-dot"></span>
+                        <span id="optimizationStatus">Optimal</span>
+                    </div>
+                    <h1 class="page-title">Optimization Results</h1>
+                    <p class="page-description">AI-powered energy allocation with linear programming</p>
+                </div>
+                <button class="btn btn-secondary" onclick="window.location.href='configure.html'">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M3 12h18M15 5l7 7-7 7"/>
+                    </svg>
+                    <span>New Configuration</span>
+                </button>
+            </div>
+
+            <!-- Key Metrics -->
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-header">
+                        <span class="metric-label">Total Electricity Cost</span>
+                        <div class="metric-icon cost-icon">₦</div>
+                    </div>
+                    <div class="metric-value" id="totalCost">--</div>
+                    <div class="metric-sublabel">Optimized allocation</div>
+                </div>
+                
+                <div class="metric-card" id="morningMetric">
+                    <div class="metric-header">
+                        <span class="metric-label">Morning Power</span>
+                        <div class="metric-icon morning-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="5"/>
+                                <line x1="12" y1="1" x2="12" y2="3"/>
+                                <line x1="12" y1="21" x2="12" y2="23"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="metric-value" id="morningPower">--</div>
+                    <div class="metric-sublabel" id="morningDetails">-- / -- kWh</div>
+                </div>
+                
+                <div class="metric-card" id="afternoonMetric">
+                    <div class="metric-header">
+                        <span class="metric-label">Afternoon Power</span>
+                        <div class="metric-icon afternoon-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="5"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="metric-value" id="afternoonPower">--</div>
+                    <div class="metric-sublabel" id="afternoonDetails">-- / -- kWh</div>
+                </div>
+                
+                <div class="metric-card" id="eveningMetric">
+                    <div class="metric-header">
+                        <span class="metric-label">Evening Power</span>
+                        <div class="metric-icon evening-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="metric-value" id="eveningPower">--</div>
+                    <div class="metric-sublabel" id="eveningDetails">-- / -- kWh</div>
+                </div>
+            </div>
+
+            <!-- Power Distribution Chart -->
+            <div class="results-section">
+                <div class="section-header">
+                    <h2 class="section-title">Power Distribution by Time Period</h2>
+                </div>
+                <div class="chart-wrapper">
+                    <div id="chartContainer" class="chart-container">
+                        <!-- Chart will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Energy Allocation Table -->
+            <div class="results-section">
+                <div class="section-header">
+                    <h2 class="section-title">Energy Allocation per Room</h2>
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" data-filter="all">All Rooms</button>
+                        <button class="filter-btn" data-filter="period">By Period</button>
+                    </div>
+                </div>
+                <div class="table-wrapper">
+                    <table class="results-table">
+                        <thead>
+                            <tr>
+                                <th>Room</th>
+                                <th>Type</th>
+                                <th>Time Period</th>
+                                <th>Allocated Power (kWh)</th>
+                            </tr>
+                        </thead>
+                        <tbody id="resultsTableBody">
+                            <!-- Table rows will be populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Power Usage Summary -->
+            <div class="results-section">
+                <div class="section-header">
+                    <h2 class="section-title">Power Usage Summary</h2>
+                </div>
+                <div id="summaryContainer" class="summary-container">
+                    <!-- Summary cards will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Smart_Nerg. Powered by Linear Programming & AI.</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configure Building - Smart_Nerg</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body class="config-page">
+    <div class="grain-overlay"></div>
+    
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                        </svg>
+                    </div>
+                    <span class="logo-text">Smart_Nerg</span>
+                </div>
+                <div class="nav-links">
+                    <a href="home.html" class="nav-link">Home</a>
+                    <a href="configure.html" class="nav-link active">Configure</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="config-main">
+        <div class="container">
+            <div class="config-header">
+                <h1 class="page-title">Building Configuration</h1>
+                <p class="page-description">Configure your building parameters and constraints for energy optimization</p>
+            </div>
+
+            <div class="config-content">
+                <!-- Progress Steps -->
+                <div class="progress-steps">
+                    <div class="progress-step active" data-step="1">
+                        <div class="step-circle">1</div>
+                        <span class="step-label">Rooms</span>
+                    </div>
+                    <div class="progress-line"></div>
+                    <div class="progress-step" data-step="2">
+                        <div class="step-circle">2</div>
+                        <span class="step-label">Time & Cost</span>
+                    </div>
+                    <div class="progress-line"></div>
+                    <div class="progress-step" data-step="3">
+                        <div class="step-circle">3</div>
+                        <span class="step-label">Constraints</span>
+                    </div>
+                    <div class="progress-line"></div>
+                    <div class="progress-step" data-step="4">
+                        <div class="step-circle">4</div>
+                        <span class="step-label">Review</span>
+                    </div>
+                </div>
+
+                <!-- Form Container -->
+                <form id="configForm" class="config-form">
+                    
+                    <!-- Step 1: Room Configuration -->
+                    <div class="form-step active" data-step="1">
+                        <div class="form-card">
+                            <h2 class="form-title">Define Room Types</h2>
+                            <p class="form-subtitle">Add the types of rooms in your building and their quantities</p>
+                            
+                            <div id="roomsContainer">
+                                <!-- Default room types -->
+                                <div class="room-input-group">
+                                    <div class="input-group">
+                                        <label class="input-label">Room Type</label>
+                                        <input type="text" class="input-field room-type"  required>
+                                    </div>
+                                    <div class="input-group">
+                                        <label class="input-label">Number of Rooms</label>
+                                        <input type="number" class="input-field room-count" min="1" required>
+                                    </div>
+                                    <button type="button" class="btn-remove" onclick="removeRoom(this)">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <line x1="18" y1="6" x2="6" y2="18"/>
+                                            <line x1="6" y1="6" x2="18" y2="18"/>
+                                        </svg>
+                                    </button>
+                                </div>
+
+                                <div class="room-input-group">
+                                    <div class="input-group">
+                                        <label class="input-label">Room Type</label>
+                                        <input type="text" class="input-field room-type"  required>
+                                    </div>
+                                    <div class="input-group">
+                                        <label class="input-label">Number of Rooms</label>
+                                        <input type="number" class="input-field room-count"  min="1" required>
+                                    </div>
+                                    <button type="button" class="btn-remove" onclick="removeRoom(this)">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <line x1="18" y1="6" x2="6" y2="18"/>
+                                            <line x1="6" y1="6" x2="18" y2="18"/>
+                                        </svg>
+                                    </button>
+                                </div>
+
+                                <div class="room-input-group">
+                                    <div class="input-group">
+                                        <label class="input-label">Room Type</label>
+                                        <input type="text" class="input-field room-type"required>
+                                    </div>
+                                    <div class="input-group">
+                                        <label class="input-label">Number of Rooms</label>
+                                        <input type="number" class="input-field room-count" min="1" required>
+                                    </div>
+                                    <button type="button" class="btn-remove" onclick="removeRoom(this)">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <line x1="18" y1="6" x2="6" y2="18"/>
+                                            <line x1="6" y1="6" x2="18" y2="18"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <button type="button" class="btn btn-secondary" onclick="addRoom()">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <line x1="12" y1="5" x2="12" y2="19"/>
+                                    <line x1="5" y1="12" x2="19" y2="12"/>
+                                </svg>
+                                <span>Add Room Type</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Time Periods & Electricity Cost -->
+                    <div class="form-step" data-step="2">
+                        <div class="form-card">
+                            <h2 class="form-title">Time Periods & Electricity Cost</h2>
+                            <p class="form-subtitle">Define time periods and their electricity rates (₦/kWh)</p>
+                            
+                            <div id="periodsContainer">
+                                <div class="period-input-group">
+                                    <div class="input-group">
+                                        <label class="input-label">Time Period</label>
+                                        <input type="text" placeholder="Morning, Afternoon, evening" class="input-field period-name"  required>
+                                    </div>
+                                    <div class="input-group">
+                                        <label class="input-label">Electricity Cost (₦/kWh)</label>
+                                        <input type="number"  class="input-field period-cost"  min="0" step="0.01" required>
+                                    </div>
+                                    <div class="input-group">
+                                        <label class="input-label">Available Power (kWh)</label>
+                                        <input type="number" class="input-field period-power" min="0" step="0.01" required>
+                                    </div>
+                                    <button type="button" class="btn-remove" onclick="removePeriod(this)">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <line x1="18" y1="6" x2="6" y2="18"/>
+                                            <line x1="6" y1="6" x2="18" y2="18"/>
+                                        </svg>
+                                    </button>
+                                </div>
+
+                                <div class="period-input-group">
+                                    <div class="input-group">
+                                        <label class="input-label">Time Period</label>
+                                        <input type="text"placeholder="Morning, Afternoon, evening" class="input-field period-name" required>
+                                    </div>
+                                    <div class="input-group">
+                                        <label class="input-label">Electricity Cost (₦/kWh)</label>
+                                        <input type="number" class="input-field period-cost" min="0" step="0.01" required>
+                                    </div>
+                                    <div class="input-group">
+                                        <label class="input-label">Available Power (kWh)</label>
+                                        <input type="number" class="input-field period-power"  min="0" step="0.01" required>
+                                    </div>
+                                    <button type="button" class="btn-remove" onclick="removePeriod(this)">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <line x1="18" y1="6" x2="6" y2="18"/>
+                                            <line x1="6" y1="6" x2="18" y2="18"/>
+                                        </svg>
+                                    </button>
+                                </div>
+
+                                <div class="period-input-group">
+                                    <div class="input-group">
+                                        <label class="input-label">Time Period</label>
+                                        <input type="text" placeholder="Morning, Afternoon, evening" class="input-field period-name" required>
+                                    </div>
+                                    <div class="input-group">
+                                        <label class="input-label">Electricity Cost (₦/kWh)</label>
+                                        <input type="number" class="input-field period-cost" min="0" step="0.01" required>
+                                    </div>
+                                    <div class="input-group">
+                                        <label class="input-label">Available Power (kWh)</label>
+                                        <input type="number" class="input-field period-power"min="0" step="0.01" required>
+                                    </div>
+                                    <button type="button" class="btn-remove" onclick="removePeriod(this)">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <line x1="18" y1="6" x2="6" y2="18"/>
+                                            <line x1="6" y1="6" x2="18" y2="18"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <button type="button" class="btn btn-secondary" onclick="addPeriod()">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <line x1="12" y1="5" x2="12" y2="19"/>
+                                    <line x1="5" y1="12" x2="19" y2="12"/>
+                                </svg>
+                                <span>Add Time Period</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Constraints & Demand -->
+                    <div class="form-step" data-step="3">
+                        <div class="form-card">
+                            <h2 class="form-title">Constraints & Demand Ranges</h2>
+                            <p class="form-subtitle">Set minimum power requirements and demand prediction ranges for each room type</p>
+                            
+                            <div id="constraintsContainer">
+                                <!-- Will be populated dynamically based on room types -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 4: Review -->
+                    <div class="form-step" data-step="4">
+                        <div class="form-card">
+                            <h2 class="form-title">Review Configuration</h2>
+                            <p class="form-subtitle">Verify your settings before running optimization</p>
+                            
+                            <div id="reviewContainer" class="review-container">
+                                <!-- Will be populated dynamically -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Navigation Buttons -->
+                    <div class="form-navigation">
+                        <button type="button" class="btn btn-secondary" id="prevBtn" onclick="changeStep(-1)" style="display: none;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M19 12H5M12 19l-7-7 7-7"/>
+                            </svg>
+                            <span>Previous</span>
+                        </button>
+                        <button type="button" class="btn btn-primary" id="nextBtn" onclick="changeStep(1)">
+                            <span>Next</span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </button>
+                        <button type="button" class="btn btn-primary btn-large" id="submitBtn" onclick="submitForm()" style="display: none;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                            </svg>
+                            <span>Run Optimization</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner">
+            <div class="spinner-ring"></div>
+            <div class="spinner-ring"></div>
+            <div class="spinner-ring"></div>
+            <p class="loading-text">Optimizing energy allocation...</p>
+        </div>
+    </div>
+    <script src="js/configure.js"></script>
+
+</body>
+</html>
