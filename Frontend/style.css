@@ -240,7 +240,7 @@ body {
 
 /* ===== HOME PAGE ===== */
 .hero {
-    padding: 12rem 0rem;
+    padding: 10rem 0rem;
 }
 
 .hero-grid {
@@ -322,7 +322,6 @@ body {
 
 .hero-cta {
     display: flex;
-
     gap: 1rem;
 }
 
